@@ -1,0 +1,21 @@
+spring:
+  batch:
+    job:
+      names: helloWorldJob
+      enabled: false
+    jdbc:
+      initialize-schema: ALWAYS
+  jpa:
+    generate-ddl: false
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+    # DBCP ??? ?? false? ??
+    open-in-view: false
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/pigeon_epas_local
+    username: develop
+    password: 1qaz@WSX
