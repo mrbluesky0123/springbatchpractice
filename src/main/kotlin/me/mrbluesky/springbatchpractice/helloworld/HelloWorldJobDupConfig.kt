@@ -15,27 +15,27 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
-class HelloWorldJobConfig(val jobBuilderFactory: JobBuilderFactory,
-                          val stepBuilderFactory: StepBuilderFactory,
-                          val simpleTasklet: SimpleTasklet) {
+class HelloWorldJobDupConfig(val jobBuilderFactory: JobBuilderFactory,
+                             val stepBuilderFactory: StepBuilderFactory,
+                             val simpleTasklet: SimpleTasklet) {
     companion object {
-        val log: Logger = LoggerFactory.getLogger(HelloWorldJobConfig::class.java) as Logger
+        val log: Logger = LoggerFactory.getLogger(HelloWorldJobDupConfig::class.java) as Logger
     }
 
     @Bean
-    fun helloWorldJob(): Job {
-        log.trace("helloWorldJob")
-        return jobBuilderFactory.get("helloWorldJob")
+    fun helloWorldJob3(): Job {
+        log.info("helloWorldJob3")
+        return jobBuilderFactory.get("helloWorldJob3")
             .incrementer(RunIdIncrementer())
-            .start(helloWorldStep())
-            .next(helloWorldStep2())
+            .start(helloWorldStep3())
+            .next(helloWorldStep4())
             .build()
     }
 
     @Bean
-    fun helloWorldStep(): Step {
-        log.trace("##############@@@")
-        return stepBuilderFactory.get("helloWorldStep")
+    fun helloWorldStep3(): Step {
+        log.info("##############@@@")
+        return stepBuilderFactory.get("helloWorldStep3")
             .tasklet { contribution, chunkContext ->
                 log.error("#####123#######")
                 log.error("Hello, World! Spring Batch!")
@@ -44,9 +44,9 @@ class HelloWorldJobConfig(val jobBuilderFactory: JobBuilderFactory,
             .build()
     }
     @Bean
-    fun helloWorldStep2(): Step {
-        log.trace("##############@22@@")
-        return stepBuilderFactory.get("helloWorldStep")
+    fun helloWorldStep4(): Step {
+        log.info("##############@3@@")
+        return stepBuilderFactory.get("helloWorldStep33")
             .tasklet { contribution, chunkContext ->
                 log.error("#####123#######")
                 log.error("Hello, World! Spring Batch!")

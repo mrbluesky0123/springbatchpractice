@@ -9,7 +9,7 @@ import org.springframework.batch.repeat.RepeatStatus
 import org.springframework.stereotype.Component
 
 @Component
-@StepScope
+//@StepScope
 class SimpleTasklet(): Tasklet {
     val logger = LoggerFactory.getLogger(this.javaClass.simpleName)
 
